@@ -1,4 +1,12 @@
 $ ->
+  today = (new XDate).toString('MM-dd-yy')
+
+  SleeperAgent.loaded = (client) ->
+    client.readFile "#{today}.txt", (error, data) ->
+      # if we can find a file
+      unless error
+        $('.sleep').attr('disabled', 'disabled').text("Sleeping since #{data.toString('hh:mm:ss')}")
+
   $(document).on 'click', '.sleep', (e) ->
     {persistence:fs} = SleeperAgent
 
