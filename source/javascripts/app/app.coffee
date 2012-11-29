@@ -1,5 +1,7 @@
+#= require_tree .
+
 String::capitalize = ->
- this.charAt(0).toUpperCase() + this.substring(1).toLowerCase()
+  this.charAt(0).toUpperCase() + this.substring(1).toLowerCase()
 
 Object.defaults = (target, objects...) ->
   for object in objects

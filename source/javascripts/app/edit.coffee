@@ -1,4 +1,4 @@
-$ ->
+SleeperAgent.Edit = ->
   updateModel = ->
     today = (new XDate).toString('MM-dd-yy')
 

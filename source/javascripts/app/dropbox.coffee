@@ -8,5 +8,3 @@ client.authDriver(driver)
 
 client.authenticate (error, client) ->
   SleeperAgent.persistence = client
-
-  SleeperAgent.loaded(client)
