@@ -1,20 +1,17 @@
 $ ->
-  model = SleeperAgent.Model()
+  updateModel = ->
+    today = (new XDate).toString('MM-dd-yy')
 
-  $(document).on 'change', 'form .quality', (e) ->
-    $target = $(e.currentTarget)
+    model = SleeperAgent.Model()
 
-    model.set 'sleepQuality', $target.val()
-    model.set 'time', (new Date)
+    SleeperAgent.Model.find today, (foundModel) ->
+      model = foundModel
 
-    model.save()
+      attributes = SleeperAgent.serializeForm('form')
 
-  $(document).on 'mouseup', '.toggle', (e) ->
-    $target = $(e.currentTarget)
+      model.set attributes
 
-    attributeName = $target.attr('name').trim().replace /(\-|_|\s)+(.)?/g, (match, separator, chr) ->
-      if chr then chr.toUpperCase() else ''
+      model.save()
 
-    model.set attributeName, $target.is('.active')
-
-    model.save()
+  $(document).on 'change', 'form .quality', updateModel
+  $(document).on 'mouseup', '.toggle', updateModel

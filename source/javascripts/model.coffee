@@ -6,7 +6,10 @@ SleeperAgent.namespace 'SleeperAgent', (sa) ->
       attributes
 
     set: (attr, value) ->
-      attributes[attr] = value
+      if value?
+        attributes[attr] = value
+      else
+        Object.extend attributes, attr
 
     save: (errorCB) ->
       today = XDate(attributes.time)
