@@ -53,8 +53,7 @@ SleeperAgent.serializeForm = (formSelector) ->
 
   output
 
-
-$ ->
+SleeperAgent.init = ->
   # On the first and only page load, call that page's function
   SleeperAgent.callPageFunction window.location.pathname
 

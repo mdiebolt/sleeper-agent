@@ -28,3 +28,21 @@ SleeperAgent.namespace 'SleeperAgent', (sa) ->
         cb?(sa.Model(JSON.parse(data)))
       else
         return undefined
+
+  sa.Model.findByName = (fullDate, cb) ->
+    sa.persistence.readFile fullDate, (error, data) ->
+      if data?
+        cb?(sa.Model(JSON.parse(data)))
+      else
+        return undefined
+
+  # sa.Model.findAll = (cb) ->
+  #   output = []
+
+  #   sa.persistence.readdir '/', (error, fileNames) ->
+  #     if fileNames?
+  #       output = $.map fileNames, (name, index) ->
+  #         sa.Model.findByName name, (model) ->
+  #           output.push model
+
+  #   cb?(output)

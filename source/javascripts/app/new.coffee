@@ -11,6 +11,8 @@ SleeperAgent.New = ->
 
     model = SleeperAgent.Model(
       time: (new Date)
-    ).save()
+    )
+
+    model.save()
 
     $target.attr('disabled', 'disabled').text("Sleeping since #{model.asleepSince()}")
