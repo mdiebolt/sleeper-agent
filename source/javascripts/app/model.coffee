@@ -2,6 +2,11 @@ SleeperAgent.namespace 'SleeperAgent', (sa) ->
   sa.Model = (attributes={}) ->
     attributes = attributes
 
+    asleepSince: ->
+      return unless attributes.time?
+
+      XDate(attributes.time.toString('hh:mm:ss'))
+
     toJSON: ->
       attributes
 
@@ -19,4 +24,7 @@ SleeperAgent.namespace 'SleeperAgent', (sa) ->
 
   sa.Model.find = (date, cb) ->
     sa.persistence.readFile "sleep-log-#{date}.txt", (error, data) ->
-      cb?(sa.Model(JSON.parse(data)))
+      if data?
+        cb?(sa.Model(JSON.parse(data)))
+      else
+        return undefined
