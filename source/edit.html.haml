@@ -5,16 +5,16 @@
     %form
       %label
         %h4 Quality of sleep
-        %input.quality(placeholder="" type="range" min='1' max='5' value='3')
+        %input.quality(name="sleep-quality" placeholder="" type="range" min='1' max='5' value='3')
       %label
         %h4 Did you sleep through the night?
-        .toggle
+        .toggle(name="slept-through-night")
           .toggle-handle
       %label
         %h4 Did you fall asleep quickly?
-        .toggle
+        .toggle(name="fell-asleep-quickly")
           .toggle-handle
       %label
         %h4 Did you exercise yesterday?
-        .toggle
+        .toggle(name="exercised")
           .toggle-handle

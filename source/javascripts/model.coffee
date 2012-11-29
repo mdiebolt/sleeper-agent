@@ -13,3 +13,7 @@ SleeperAgent.namespace 'SleeperAgent', (sa) ->
 
       sa.persistence.writeFile "sleep-log-#{today.toString('MM-dd-yy')}.txt", JSON.stringify(attributes), (error, stat) ->
         errorCB?(error)
+
+  sa.Model.find = (date, cb) ->
+    sa.persistence.readFile "sleep-log-#{date}.txt", (error, data) ->
+      cb?(sa.Model(JSON.parse(data)))
