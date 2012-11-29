@@ -36,13 +36,13 @@ SleeperAgent.namespace 'SleeperAgent', (sa) ->
       else
         return undefined
 
-  # sa.Model.findAll = (cb) ->
-  #   output = []
+  sa.Model.findAll = ->
+    output = []
 
-  #   sa.persistence.readdir '/', (error, fileNames) ->
-  #     if fileNames?
-  #       output = $.map fileNames, (name, index) ->
-  #         sa.Model.findByName name, (model) ->
-  #           output.push model
+    sa.persistence.readdir '/', (error, fileNames) ->
+      if fileNames?
+        for name in fileNames
+          sa.Model.findByName name, (model) ->
+            output.push model
 
-  #   cb?(output)
+    output
